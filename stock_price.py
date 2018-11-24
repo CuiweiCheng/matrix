@@ -25,5 +25,3 @@ def download_stock_price(stock_symbol):
     with open(f"{stock_symbol}.csv", "wb") as code:
         code.write(r.content)
 
-
-download_stock_price('chh')
