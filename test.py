@@ -1,8 +1,10 @@
 import pandas as pd
-import numpy as np
+import stock_price as sp
 
-df = pd.read_csv('chh.csv', sep='\t')
-# print(df)
-# print(df.columns)
-print(df['Date'][0])
-# print(type(df['Date']))
+
+df = pd.read_csv('company_list.csv')
+# print(df[:3])
+company_slice = pd.DataFrame(df, index=range(3), columns=['Symbol', 'Name', 'Sector'])
+print(company_slice)
+for i in df['Symbol'][:3]:
+    sp.download_stock_price(i)

@@ -20,9 +20,8 @@ def download_stock_price(stock_symbol):
     # print(b)
     # print(b[2:-1])
     download_url = 'https://charting.nasdaq.com/ext/' + b[2:-4] + 'xcl-'
-    print(download_url)
+    # print(download_url)
     r = requests.get(download_url)
     with open(f"{stock_symbol}.csv", "wb") as code:
         code.write(r.content)
-
-def 
+    print(f'stock price of {stock_symbol} downloaded')
