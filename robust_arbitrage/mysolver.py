@@ -5,6 +5,21 @@ import math
 from gurobipy import *
 
 def lpsolver(lpfilename, logfilename):
+    
+    """
+        Call Gurobi to solve the linear programming
+        
+        Parameters
+        ----------
+        lpfilename : a file name that contains standard LP formulation 
+            More details are included in the attachment in the example.
+        logfilename : a file name that LP solver will print the solution into
+            More details are included in the attachment in the example.
+        
+        Returns
+        -------
+        None will return (just return 0)
+        """
 
     print "solving LP in file", lpfilename, "with log file", logfilename
     try:

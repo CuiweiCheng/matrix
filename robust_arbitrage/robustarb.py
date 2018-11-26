@@ -15,15 +15,14 @@ def detect_robust_arb(arbdat,sigdat,lpfile,solutionfile):
         ----------
         arbdat : file name
             The first array to pass to the rolling {human_readable}.
-        rhs : array-like
+        sigdat : file name
             The second array to pass to the rolling {human_readable}.
-        window : int
+        lpfile : int
             Size of the rolling window in terms of the periodicity of the data.
-        out : array-like, optional
+        solutionfile : array-like, optional
             Array to use as output buffer.
             If not passed, a new array will be created.
-        **kwargs
-            Forwarded to :func:`~empyrical.{name}`.
+        
         Returns
         -------
         rolling_{name} : array-like
