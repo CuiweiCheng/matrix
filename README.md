@@ -29,15 +29,15 @@ Company / Index|Symbol
 ```
 
 ## Build factor models and conduct PCA to construct stock portfolios
-### Get the price of stocks
+### Step1: Get the price of stocks
 
-### Calculate rate of return
+### Step2: Calculate rate of return
 
-### Calculate the covariance matrix of rate of return
+### Step3: Calculate the covariance matrix of rate of return
 
-### Reduce dimensions by PCA
+### Step4: Reduce dimensions by PCA
 
-### Generate lower-dimensional covariance matrix
+### Step5: Generate lower-dimensional covariance matrix
 
 ```python
 >>> import eigen
@@ -48,10 +48,10 @@ Company / Index|Symbol
 ```
 
 ## Build Neural Network to analyze stock portfolios
-### Set parameter for the Neural Network
+### Step1: Set parameter for the Neural Network
 
-### Train the Neural Network
+### Step2: Train the Neural Network
 
-### Predict stock price
+### Step3: Predict stock price
 
 ## Optimize the portfolios by Quadratic Optimization
