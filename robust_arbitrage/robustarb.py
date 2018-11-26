@@ -4,36 +4,49 @@
 import sys
 from robustwritelp import writelp
 from mysolver import lpsolver
-
-#if len(sys.argv) != 4:
-#    sys.exit("usage: robustarb.py datafilename sigmafilename lpfilename\n")
-#
-##now open and read data file
-#try:
-#    datafile = open(sys.argv[1], 'r') # opens the data file
-#except IOError:
-#    sys.exit("Cannot open file %s\n" % sys.argv[1])
     
 def detect_robust_arb(arbdat,sigdat,lpfile,solutionfile):
+    
+    """
+        Detect the existence of a TYPE A Arbitrage.
+        Using daily price data of numsec number of securities
+        
+        Parameters
+        ----------
+        arbdat : file name
+            The first array to pass to the rolling {human_readable}.
+        rhs : array-like
+            The second array to pass to the rolling {human_readable}.
+        window : int
+            Size of the rolling window in terms of the periodicity of the data.
+        out : array-like, optional
+            Array to use as output buffer.
+            If not passed, a new array will be created.
+        **kwargs
+            Forwarded to :func:`~empyrical.{name}`.
+        Returns
+        -------
+        rolling_{name} : array-like
+            The rolling {human_readable}.
+        """
+        
     datafile= open(arbdat, 'r')
     
     lines = datafile.readlines();
     datafile.close()
     
-    #print lines[0]
     firstline = lines[0].split()
-    #print "first line is", firstline
     
     numsec = int(firstline[1])
     numscen = int(firstline[3])
     r = float(firstline[5])
-    print "\n"
-    print "number of securities:", numsec,"number of scenarios", numscen,"r",r
-    print "\n"
+    print ("\n")
+    print ("number of securities:", numsec,"number of scenarios", numscen,"r",r)
+    print ("\n")
     
     #allocate prices as one-dim array
     total = (1 + numsec)*(1 + numscen)
-    print "total allocation:",  total
+    print ("total allocation:",  total)
     p = [0]*total
     k = 0
     # line k+1 has scenario k (0 = today)
@@ -73,10 +86,10 @@ def detect_robust_arb(arbdat,sigdat,lpfile,solutionfile):
     
     lpwritecode = writelp(lpfile, p, sig , numsec, numscen)
     
-    print "wrote LP to file", lpfile, "with code", lpwritecode
+    print ("wrote LP to file", lpfile, "with code", lpwritecode)
     
     #now solve lp 
     
     lpsolvecode = lpsolver(lpfile, solutionfile)
     
-    print "solved LP at", lpfile,"with code", lpsolvecode
+    print ("solved LP at", lpfile,"with code", lpsolvecode)

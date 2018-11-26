@@ -2,29 +2,6 @@ import numpy as np
 from numpy import linalg as LA
 import pandas as pd
 import sys
-
-''' ------------------ Import data from file ------------------ '''  
-
-"""
-    Sums the absolute value of shares traded in each name on each day.
-    Adds columns containing the closing price and total daily volume for
-    each day-ticker combination.
-    Parameters
-    ----------
-    transactions : pd.DataFrame
-        Prices and amounts of executed trades. One row per trade.
-        - See full explanation in tears.create_full_tear_sheet
-    market_data : pd.Panel
-        Contains "volume" and "price" DataFrames for the tickers
-        in the passed positions DataFrames
-    Returns
-    -------
-    txn_daily : pd.DataFrame
-        Daily totals for transacted shares in each traded name.
-        price and volume columns for close price and daily volume for
-        the corresponding ticker, respectively.
-    """
-    
     
 def _compute_fx(x, mu, cov, lambda0):
 
@@ -122,6 +99,35 @@ def _find_s(x, y, u, l,mu,covariance,lambdaval):
     return (x_new, s_min, min(result))
 
 def quadratic_opt(n,lam,matrix,covariance):
+    
+    """
+    Compute the weight of n portfolios according to Markowitz Model.
+    Utilize quadratic optimization to decide the optimal weight of the assets.
+    
+    Parameters
+    ----------
+    n : Integer
+        n denotes the number of assets which compose the portfolio
+    lam : any real number (float)
+        lam denote the lambda in the Markowitz Model, which reflects the Risk Attitude
+        of the investor.
+        If lam is larger, the more Risk-appetite the investor is. 
+        If lam is smaller, the more Risk-averse the investor is.
+    matrix: pd.DataFrame
+        consists of n rows, each row i has three attribute:
+            lower, the lower bound of the weight of asset i
+            upper, the upper bound of the weight of asset i
+            mu, the return rate of asset i (usually use daily data)
+    covariance: pd.DataFrame
+        the covariance matrix of rate of return of the n assets (usually use daily data)
+        
+    Returns
+    -------
+    x_new : n-dimension vector (list), which denote the optimal weight of the n assets
+        Assuming the sum of each dimension in x_new equals to 1
+    F_new : the objective function in Markowitz Model, denoting the minimum value of the objective function 
+    """
+    
     df1 = matrix
     df2 = covariance
     lambdaval=lam
