@@ -1,0 +1,42 @@
+
+Gurobi 8.1.0 (win64, Python) logging started 11/25/18 20:52:29
+
+Academic license - for non-commercial use only
+Read LP format model from file robust.lp
+Reading time = 0.00 seconds
+: 24 rows, 49 columns, 105 nonzeros
+Optimize a model with 24 rows, 49 columns and 105 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 3e+01]
+  Objective range  [1e+00, 9e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Presolve removed 3 rows and 7 columns
+Presolve time: 0.02s
+Presolved: 21 rows, 42 columns, 90 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0   -2.1090000e+01   2.481249e+01   0.000000e+00      0s
+      16   -1.3780604e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 16 iterations and 0.04 seconds
+Optimal objective -1.378060378e+01
+Read LP format model from file robust2.lp
+Reading time = 0.00 seconds
+: 24 rows, 49 columns, 105 nonzeros
+Optimize a model with 24 rows, 49 columns and 105 nonzeros
+Coefficient statistics:
+  Matrix range     [1e-02, 3e+01]
+  Objective range  [1e+00, 9e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [0e+00, 0e+00]
+Presolve removed 3 rows and 7 columns
+Presolve time: 0.01s
+Presolved: 21 rows, 42 columns, 90 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0   -2.1090000e+01   2.481249e+01   0.000000e+00      0s
+      16   -1.3780604e+01   0.000000e+00   0.000000e+00      0s
+
+Solved in 16 iterations and 0.03 seconds
+Optimal objective -1.378060378e+01
