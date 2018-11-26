@@ -17,6 +17,12 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 
 ## Get time series of stock prices by Web Crawler
 ### download stock price
+Company / Index|Symbol                                                                                                                                             
+---------- | -----------
+**Apple Inc.**|**AAPL**
+**Tesla, Inc.**|**TSLA**
+**Dow Jones Industrial Average** |**DJIA**                                                 
+**Standard & Poor's 500**| **SPX**
 ```python
 >>> import stock_price as sp
 >>> sp.download_stock_price('aapl')
