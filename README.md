@@ -29,6 +29,16 @@ Company / Index|Symbol
 ```
 
 ## Build factor models and conduct PCA to construct stock portfolios
+### Get the price of stocks
+
+### Calculate rate of return
+
+### Calculate the covariance matrix of rate of return
+
+### Reduce dimensions by PCA
+
+### Generate lower-dimensional covariance matrix
+
 ```python
 >>> import eigen
 >>> dir(eigen)
@@ -38,6 +48,10 @@ Company / Index|Symbol
 ```
 
 ## Build Neural Network to analyze stock portfolios
+### Set parameter for the Neural Network
 
+### Train the Neural Network
+
+### Predict stock price
 
 ## Optimize the portfolios by Quadratic Optimization
