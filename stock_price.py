@@ -25,3 +25,7 @@ def download_stock_price(stock_symbol):
     with open(f"{stock_symbol}.csv", "wb") as code:
         code.write(r.content)
     print(f'stock price of {stock_symbol} downloaded')
+
+# symbol of stock index:
+# DJIA: Dow Jones Industrial Average
+# SPX: Standard & Poor's 500
