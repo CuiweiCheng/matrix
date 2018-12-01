@@ -15,6 +15,8 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 
 - [Optimize the portfolios by large-scale Quadratic Optimization based on Markowitz Model and Backtesting based on historical market data](#optimize-the-portfolios-by-quadratic-optimization)
 
+## Analyze stock prices by exploratory data analysis and plotting K-line graph
+
 ## Get time series of stock prices by Web Crawler
 ### Download stock price
 Company / Index|Symbol                                                                                                                                             
