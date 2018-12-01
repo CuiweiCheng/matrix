@@ -15,7 +15,6 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 
 - [Optimize the portfolios by large-scale Quadratic Optimization based on Markowitz Model and Backtesting based on historical market data](#optimize-the-portfolios-by-quadratic-optimization)
 
-## Analyze stock prices by exploratory data analysis and plotting K-line graph
 
 ## Get time series of stock prices by Web Crawler
 ### Download stock price
@@ -29,6 +28,10 @@ Company / Index|Symbol
 >>> import stock_price as sp
 >>> sp.download_stock_price('aapl')
 ```
+
+## Analyze stock prices by exploratory data analysis and plotting K-line graph
+
+
 ## Investigate indicators of stock prices
 ### Analyze six indicators:
 Indicators |Method   
