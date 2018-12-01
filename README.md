@@ -28,7 +28,7 @@ Company / Index|Symbol
 >>> sp.download_stock_price('aapl')
 ```
 ## Investigate indicators of stock prices
-### Analysis six indicators:
+### Analyze six indicators:
 Indicators |Method   
 ---------- | -----------
 **Open price**|**get_Open**
