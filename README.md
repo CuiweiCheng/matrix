@@ -251,6 +251,9 @@ Set the  `lower bounds`, `upper bounds` and `mu`(which is expected return rate f
 ```python   
 >>> import random
 >>> import numpy as np
+>>> import pandas as pd
+>>> covariance=pd.DataFrame(cov_matrix)
+>>> n=len(covariance)
 >>> lower=np.array([random.uniform(0, 0.1) for i in range(n)])
 >>> upper=np.array([random.uniform(0.9, 1) for i in range(n)])
 >>> mu=asset_pool_return_pd.mean(axis=1)
@@ -269,12 +272,14 @@ Set `lambda` denoting the risk preference in the Markowitz Model, larger `lambda
 ```
 Set (or calculated from original stock price data) the covariance matrix of the `n` stocks 
 ```python   
->>> covariance=cov_matrix
+>>> import pandas as pd
+>>> covariance=pd.DataFrame(cov_matrix)
 ```
 ### Step2: Utilize `First Order Method` and iterate enough times to achieve optimal weight of `n` stocks
 ```python
->>> import quadratic_opt from quadratic   
->>> x_new, F_new = quadratic_opt(n,lam,lower,upper,mu,covariance):
+>>> n=len(covariance)
+>>> from quadratic import quadratic_opt 
+>>> x_new, F_new = quadratic_opt(n,lam,lower,upper,mu,covariance)
 ```
 We then get the optimal weight of `n` stocks and the corresponding minimum value of the Markowitz's Objective Function. Therefore, since we have the optimal weight of the `n` stocks, we can base on this weight to construct the portfolio and conduct further analysis.
 
