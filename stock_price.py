@@ -63,4 +63,5 @@ def dataframe_of_stocks(list_of_stock_symbol):
         except KeyError:
             print(f'No data available for stock {i}')
         os.remove(f'{i}.csv')
+    combine_price.index = range(1, len(combine_price) + 1)
     return combine_price
