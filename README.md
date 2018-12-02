@@ -74,10 +74,10 @@ It includes the following three steps:
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
-
-### Step2: Train the Neural Network
-
-### Step3: Predict stock price
+We need to initialize these parameters for training and prediction:  
+`n`, `m`, `t`, `nn_architecture`, `epochs`, `learning_rate`, `stockdata`
+`n`
+### Step2: Predict stock price
 
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
