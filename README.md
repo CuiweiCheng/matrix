@@ -56,9 +56,9 @@ Company / Index|Symbol
 
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
-Set the lower bounds, upper bounds and expected return rate for n stocks. 
-Set lambda denoting the risk preference in the Markov Model: 
-Set (or calculated from original stock price data) the covariance matrix of the n stocks
+Set the lower bounds, upper bounds and expected return rate for n stocks.   
+Set lambda denoting the risk preference in the Markov Model:   
+Set (or calculated from original stock price data) the covariance matrix of the n stocks  
 ### Step2: Utilize First Order Method and iterate enough times
-We then get the optimal weight of n stocks and the corresponding minimum value of the portfolio based on these n stocks
+We then get the optimal weight of n stocks and the corresponding minimum value of the portfolio based on these n stocks  
 
