@@ -27,7 +27,7 @@ def download_stock_price(stock_symbol):
     r = requests.get(download_url)
     with open(f"{stock_symbol}.csv", "wb") as code:
         code.write(r.content)
-    print(f'stock price of {stock_symbol} downloaded, you can find it in the current path')
+    # print(f'stock price of {stock_symbol} downloaded, you can find it in the current path')
 
 
 def dataframe_of_single_stock(stock_symbol):
