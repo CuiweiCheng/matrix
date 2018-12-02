@@ -30,14 +30,21 @@ Company / Index|Symbol
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks
+Assume we have `m` daily price of `n` stocks stored in asset_pool_pd, which is a `pd.DataFrame` having `n` rows x `m` columns
+For example, let `asset_pool_pd` be a `pd.DataFrame` which has `947` rows x `504` columns. 
 
-### Step2: Calculate rate of return
+Each row represents `a stock` and each column represent `a day`.
+### Step2: Set the parameter `tolerance`
+Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than `tolerance*the max eigenvalue`, we stop calculate the `eigenvalue` because the following eigenvalue is too small and trivial.
+### Step3: Generate eigenvalue and eigenvector
 
-### Step3: Calculate the covariance matrix of rate of return
+#### Step3.1 Calculate rate of return
+```python
+>>> asset_pool_return_pd=calculate_return_rate(asset_pool_pd)
+```
 
-### Step4: Reduce dimensions by PCA
-
-### Step5: Generate lower-dimensional covariance matrix
+#### Step3.2: Calculate the covariance matrix of rate of return
+### Step4: Generate lower-dimensional covariance matrix
 
 ```python
 >>> import eigen
@@ -56,9 +63,9 @@ Company / Index|Symbol
 
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
-Set the lower bounds, upper bounds and expected return rate for n stocks.   
-Set lambda denoting the risk preference in the Markov Model:   
-Set (or calculated from original stock price data) the covariance matrix of the n stocks  
-### Step2: Utilize First Order Method and iterate enough times
-We then get the optimal weight of n stocks and the corresponding minimum value of the portfolio based on these n stocks  
+Set the lower bounds, upper bounds and expected return rate for `n` stocks.   
+Set `lambda` denoting the risk preference in the Markov Model:   
+Set (or calculated from original stock price data) the covariance matrix of the `n` stocks  
+### Step2: Utilize `First Order Method` and iterate enough times to achieve optimal weight of `n` stocks
+We then get the optimal weight of `n` stocks and the corresponding minimum value of the portfolio based on these `n` stocks  
 
