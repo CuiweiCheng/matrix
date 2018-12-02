@@ -36,23 +36,35 @@ For example, let `asset_pool_pd` be a `pd.DataFrame` which has `947` rows x `504
 Each row represents `a stock` and each column represent `a day`.
 ### Step2: Set the parameter `tolerance`
 Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than `tolerance*the max eigenvalue`, we stop calculate the `eigenvalue` because the following eigenvalue is too small and trivial.
-### Step3: Generate eigenvalue and eigenvector
-
-#### Step3.1 Calculate rate of return
+For example:  
 ```python
->>> asset_pool_return_pd=calculate_return_rate(asset_pool_pd)
+>>> tolerance=0.0000001
 ```
-
-#### Step3.2: Calculate the covariance matrix of rate of return
-### Step4: Generate lower-dimensional covariance matrix
-
+### Step3: Generate eigenvalue and eigenvector
+```python
+>>> from eigen import calculate_eigens 
+>>> evalist,vlist=calculate_eigens(asset_pool_pd,tolerance)
+```
+We can take an insight into the function `calculate_eigens`  
 ```python
 >>> import eigen
 >>> dir(eigen)
->>> asset_pool_pd=eigen.calculate_return_rate(asset_pool_pd)
->>> asset_pool_pd=eigen.calculate_cov(asset_pool_pd)
->>> evalist,vlist=eigen.calculate_eigens(asset_pool_pd)
 ```
+It includes three steps: calculate 
+#### Step3.1 Calculate rate of return
+```python
+>>> import eigen 
+>>> asset_pool_return_pd=eigen.calculate_return_rate(asset_pool_pd)
+```
+#### Step3.2: Calculate the covariance matrix of rate of return
+```python
+>>> import eigen 
+>>> cov_matrix=eigen.calculate_cov(asset_pool_return_pd)
+```
+#### Step3.2: Calculate the covariance matrix of rate of return
+
+### Step4: Generate lower-dimensional covariance matrix
+
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
