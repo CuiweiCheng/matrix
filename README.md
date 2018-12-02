@@ -43,6 +43,12 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 >>> y = sp.dataframe_of_stocks(['BIDU', 'SINA'])
 >>> print(y)
 ```
+## Analyze stock prices by exploratory data analysis and plotting K-line graph
+### Step1: Get the price of stocks
+### Step2: Visualize time series of data
+### Step3: Plot K-line graph
+### Step4: Financial Analyses
+We consider returns, volatility and Ordinary Least-Squares Regression (OLS)
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks
