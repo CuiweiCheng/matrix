@@ -82,11 +82,15 @@ Analysze Apple, Tesla, Goldman Sachs and Microsoft
 >>>sns.heatmap(df.xs(key='Adj Close',axis=1,level='Attributes').corr(),annot=True)
 ```
 ### Step3: Plot K-line graph
-```python
->>>import k_plot
->>>k_plot.plot_k_line('AAPL')
-```
-![image](https://github.com/CuiweiCheng/matrix/raw/master/k_line.jpg)
+download a matplotlib.finance
+
+git clone https://github.com/matplotlib/mpl_finance.git
+cd mpl_finance/
+python setup.py build
+python setup.py install
+from matplotlib.finance import candlestick_ochl
+--> from mpl_finance import candlestick_ochl
+
 
 ## Investigate indicators of stock prices
 ### Step1: Get the price of stocks
@@ -247,11 +251,18 @@ Therefore, `Y_hat` has prediction return of `947` asset on `241` days
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
 Set the  `lower bounds`, `upper bounds` and `mu`(which is expected return rate for `n` stocks.   
-Set `lambda` denoting the risk preference in the Markowitz Model:   
+```python   
+>>> import random
+>>> import numpy as np
+>>> lower=np.array([random.uniform(0, 0.5) for i in range(n)])
+>>> upper=np.array([random.uniform(0.5, 1) for i in range(n)])
+```
+Set `lambda` denoting the risk preference in the Markowitz Model, larger `lambda` means **risk preference** 
+```python   
+>>> lam=10
+```
 Set (or calculated from original stock price data) the covariance matrix of the `n` stocks 
-
-```python
->>> import quadratic_opt from quadratic   
+```python   
 >>> mu=asset_pool_return_pd.mean(axis=1)
 >>> mu.head()
 IOTS    0.002731
