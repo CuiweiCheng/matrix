@@ -47,8 +47,15 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 ### Step1: Get the price of stocks
 ### Step2: Visualize time series of data
 ### Step3: Plot K-line graph
-### Step4: Financial Analyses
-We consider returns, volatility and Ordinary Least-Squares Regression (OLS)
+
+## Investigate indicators of stock prices
+### Step1: Get the price of stocks
+### Step2: Financial Analyses
+We consider 
+1. Open price/ Close price/ Volume
+2. Simple Moving Average with different windows size
+3. Rate of Return
+4. Force Index
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks
