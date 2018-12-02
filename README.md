@@ -46,12 +46,15 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks
-Assume we have `m` daily price of `n` stocks stored in `asset_pool_pd`, which is a `pd.DataFrame` having `n` rows x `m` columns
+Assume we have `m` daily price of `n` stocks stored in `asset_pool_pd`, which is a `pd.DataFrame` having `n` rows * `m` columns
 For example, let `asset_pool_pd` be a `pd.DataFrame` which has `947` rows x `504` columns. 
-
 Each row represents `a stock` and each column represent `a day`.
+```python
+>>> asset_pool_pd.head()
+```
+
 ### Step2: Set the parameter `tolerance`
-Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than `tolerance*the max eigenvalue`, we stop calculate the `eigenvalue` because the following eigenvalue is too small and trivial.
+Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than `tolerance*the max eigenvalue`, we stop calculating the `eigenvalue` because the following eigenvalue is too small and trivial.
 For example:  
 ```python
 >>> tolerance=0.0000001
@@ -91,8 +94,17 @@ It includes the following three steps:
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
 We need to initialize these parameters for training and prediction:  
-`n`, `m`, `t`, `nn_architecture`, `epochs`, `learning_rate`, `stockdata`
-`n`
+`n`, `m`, `t`, `activation_func`, `epochs`, `learning_rate`, `stockdata`
+`n`: number of assets, integer  
+`m`: number of neural nodes in hidden layers, integer  
+`activation_func`: type of activation function, string  
+(We define three types of activation function in this module: `'tanh'`, `'relu'`, `'sigmoid'`)
+
+```python
+>>> import NeuralNetwork 
+>>> 
+```
+
 ### Step2: Predict stock price
 
 ## Optimize the portfolios by Quadratic Optimization
