@@ -55,7 +55,11 @@ def dataframe_of_stocks(list_of_stock_symbol):
         download_stock_price(i)
         df = pd.read_csv(f'{i}.csv', sep='\t')
         try:
-            combine_price.insert(loc=0, column=f'{i}', value=df['Close/Last'])
+            if len(df['Close/Last']) < 250:
+                print(f'No enough trading day for stock {i}')
+            else:
+                combine_price.insert(loc=0, column=f'{i}', value=df['Close/Last'])
+                print(f'stock {i} has been loaded just now')
         except KeyError:
             print(f'No data available for stock {i}')
         os.remove(f'{i}.csv')
