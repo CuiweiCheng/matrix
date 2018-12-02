@@ -94,15 +94,18 @@ It includes the following three steps:
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
 We need to initialize these parameters for training and prediction:  
-`n`, `m`, `t`, `activation_func`, `epochs`, `learning_rate`, `stockdata`
+`n`, `m`, `t`, `activation_func`, `epochs`, `learning_rate`, `stockdata`  
 `n`: number of assets, integer  
 `m`: number of neural nodes in hidden layers, integer  
 `activation_func`: type of activation function, string  
 (We define three types of activation function in this module: `'tanh'`, `'relu'`, `'sigmoid'`)
+`epochs`: number of iterations in training  
+`learning_rate`: stride in backpropogation affecting the update amount of parameters ('W' and 'b' on each arc) in Neural Network
+`stockdata`: 
 
 ```python
 >>> import NeuralNetwork 
->>> 
+>>>  
 ```
 
 ### Step2: Predict stock price
