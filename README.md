@@ -5,9 +5,9 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 
 - [Get time series of stock prices by Web Crawler](#get-time-series-of-stock-prices-by-web-crawler)
 
-- Analyze stock prices by exploratory data analysis and plotting K-line graph
+- [Analyze stock prices by exploratory data analysis and plotting K-line graph](#analyze-stock-prices-by-exploratory-data-analysis-and-plotting-k-line-graph)
 
-- Investigate indicators of stock prices
+- [Investigate indicators of stock prices](#investigate-indicators-of-stock-prices)
 
 - [Build factor models and conduct PCA to construct stock portfolios](#build-factor-models-and-conduct-pca-to-construct-stock-portfolios)
 
