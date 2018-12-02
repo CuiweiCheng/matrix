@@ -50,7 +50,18 @@ Assume we have `m` daily price of `n` stocks stored in `asset_pool_pd`, which is
 For example, let `asset_pool_pd` be a `pd.DataFrame` which has `947` rows x `504` columns. 
 Each row represents `a stock` and each column represent `a day`.
 ```python
+>>> df = pd.read_csv('company_list.csv')
+>>> list_of_stock_symbol = df['Symbol'][:50]  # first fifty stocks in the company list provided.
+>>> asset_pool_pd = sp.dataframe_of_stocks(list_of_stock_symbol)
 >>> asset_pool_pd.head()
+   IOTS     AEY   ADUS  ADAP  ADMP  ...    SRCE   FCCY   FLWS  TURN   PIH
+1  5.31  1.3300  74.22  6.16  3.05  ...   48.36  19.78  12.51  1.95  5.01
+2  5.14  1.3385  75.58  5.95  2.77  ...   47.72  20.05  12.81  1.96  5.10
+3  5.14  1.3385  73.99  5.15  2.75  ...   48.00  20.05  12.78  2.00  5.14
+4  5.27  1.3500  71.75  5.11  2.65  ...   47.00  20.01  12.46  1.98  5.10
+5  5.40  1.3501  68.44  5.29  2.58  ...   47.62  19.52  12.55  2.01  5.11
+
+[5 rows x 44 columns]
 ```
 
 ### Step2: Set the parameter `tolerance`
