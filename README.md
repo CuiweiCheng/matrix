@@ -16,7 +16,9 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 - [Optimize the portfolios by large-scale Quadratic Optimization based on Markowitz Model and Backtesting based on historical market data](#optimize-the-portfolios-by-quadratic-optimization)
 
 ## Get time series of stock prices by Web Crawler
-### download stock price
+### Download cvs file of a stock
+Enter a string of stock symbol, a csv file will be downloaded automatically into the current path
+
 Company / Index|Symbol                                                                                                                                             
 ---------- | -----------
 **Apple Inc.**|**AAPL**
@@ -26,6 +28,20 @@ Company / Index|Symbol
 ```python
 >>> import stock_price as sp
 >>> sp.download_stock_price('aapl')
+```
+### Get a dataframe of a single stock
+Enter a string of a stock symbol, a dataframe will be returned. This dataframe contains columns Date, Open(high, low, close) Price, Volume, etc.
+```python
+>>> import stock_price as sp
+>>> x = sp.dataframe_of_single_stock('TSLA')
+>>> print(x)
+```
+### Get a dataframe of several stocks
+This function takes a list of stock symbols, and returns a dataframe. Indexes are different date, columns are different stocks.
+```python
+>>> import stock_price as sp
+>>> y = sp.dataframe_of_stocks(['BIDU', 'SINA'])
+>>> print(y)
 ```
 
 ## Build factor models and conduct PCA to construct stock portfolios
