@@ -183,7 +183,7 @@ ADUS   -0.002932
 ADAP    0.002174
 ADMP    0.002430
 dtype: float64
->>> mu=mu.value
+>>> mu=mu.values
 ```
 ### Step2: Utilize `First Order Method` and iterate enough times to achieve optimal weight of `n` stocks
 ```python
