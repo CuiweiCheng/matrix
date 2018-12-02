@@ -16,7 +16,9 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 - [Optimize the portfolios by large-scale Quadratic Optimization based on Markowitz Model and Backtesting based on historical market data](#optimize-the-portfolios-by-quadratic-optimization)
 
 ## Get time series of stock prices by Web Crawler
-### download stock price
+### Download cvs file of a stock
+Enter a string of stock symbol, a csv file will be downloaded automatically into the current path
+
 Company / Index|Symbol                                                                                                                                             
 ---------- | -----------
 **Apple Inc.**|**AAPL**
@@ -27,40 +29,92 @@ Company / Index|Symbol
 >>> import stock_price as sp
 >>> sp.download_stock_price('aapl')
 ```
+### Get a dataframe of a single stock
+Enter a string of a stock symbol, a dataframe will be returned. This dataframe contains columns Date, Open(high, low, close) Price, Volume, etc.
+```python
+>>> import stock_price as sp
+>>> x = sp.dataframe_of_single_stock('TSLA')
+>>> print(x)
+```
+### Get a dataframe of several stocks
+This function takes a list of stock symbols, and returns a dataframe. Indexes are different date, columns are different stocks.
+```python
+>>> import stock_price as sp
+>>> y = sp.dataframe_of_stocks(['BIDU', 'SINA'])
+>>> print(y)
+```
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks
-Assume we have `m` daily price of `n` stocks stored in asset_pool_pd, which is a `pd.DataFrame` having `n` rows x `m` columns
+Assume we have `m` daily price of `n` stocks stored in `asset_pool_pd`, which is a `pd.DataFrame` having `n` rows * `m` columns
 For example, let `asset_pool_pd` be a `pd.DataFrame` which has `947` rows x `504` columns. 
-
 Each row represents `a stock` and each column represent `a day`.
-### Step2: Set the parameter `tolerance`
-Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than `tolerance*the max eigenvalue`, we stop calculate the `eigenvalue` because the following eigenvalue is too small and trivial.
-### Step3: Generate eigenvalue and eigenvector
-
-#### Step3.1 Calculate rate of return
 ```python
->>> asset_pool_return_pd=calculate_return_rate(asset_pool_pd)
+>>> asset_pool_pd.head()
 ```
 
-#### Step3.2: Calculate the covariance matrix of rate of return
-### Step4: Generate lower-dimensional covariance matrix
-
+### Step2: Set the parameter `tolerance`
+Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than `tolerance*the max eigenvalue`, we stop calculating the `eigenvalue` because the following eigenvalue is too small and trivial.
+For example:  
+```python
+>>> tolerance=0.0000001
+```
+### Step3: Generate eigenvalue and eigenvector
+```python
+>>> from eigen import calculate_eigens 
+>>> evalist,vlist=calculate_eigens(asset_pool_pd,tolerance)
+```
+We can take an insight into the module `eigen` and function `calculate_eigens`  
 ```python
 >>> import eigen
 >>> dir(eigen)
->>> asset_pool_pd=eigen.calculate_return_rate(asset_pool_pd)
->>> asset_pool_pd=eigen.calculate_cov(asset_pool_pd)
->>> evalist,vlist=eigen.calculate_eigens(asset_pool_pd)
 ```
+It includes the following three steps:  
+1. Calculate the return rate matrix
+2. Calculate covariance matrix of rate of return  
+3. Calculate eigenvalues and eigenvectors  
+#### Step3.1 Calculate rate of return
+```python
+>>> import eigen 
+>>> asset_pool_return_pd=eigen.calculate_return_rate(asset_pool_pd)
+```
+#### Step3.2: Calculate the covariance matrix of rate of return
+```python
+>>> import eigen 
+>>> cov_matrix=eigen.calculate_cov(asset_pool_return_pd)
+```
+#### Step3.3: Calculate eigenvalues and eigenvectors
+```python
+>>> import eigen 
+>>> [evalist, vlist] =eigen._estimate_spectrum(cov_matrix, tolerance)
+```
+### Step4: Generate lower-dimensional covariance matrix
+
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
+We need to initialize these parameters for training and prediction:  
+`n`, `m`, `t`, `activation_func`, `epochs`, `learning_rate`, `stockdata`  
+`n`: number of assets, integer  
+`m`: number of neural nodes in hidden layers, integer  
+`activation_func`: type of activation function, string  
+(We define three types of activation function in this module: `'tanh'`, `'relu'`, `'sigmoid'`)  
+`epochs`: number of iterations in training  
+`learning_rate`: stride in backpropogation affecting the update amount of parameters (vector 'W' and 'b' on each arc) in Neural Network  
+`stockdata`: 
 
-### Step2: Train the Neural Network
+```python
+>>> import NeuralNetwork 
+>>> n=947; m=50; 
+m,t, activation_func, epochs, learning_rate,stockdata
+```
 
-### Step3: Predict stock price
+### Step2: Predict stock price
 
+```python
+>>> import NeuralNetwork 
+>>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, "relu", epochs, learning_rate,stockdata)
+```
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
 Set the lower bounds, upper bounds and expected return rate for `n` stocks.   
