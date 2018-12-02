@@ -173,6 +173,7 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 ```
 
 ## Build Neural Network to analyze stock portfolios
+In this module, we want to utilize a simple Neural Network model to train historical return data of `n` assets to conduct a shrot-term prediction(e.g. 10 days prediction) on the return of `n` assets.
 ### Step1: Set parameter for the Neural Network
 We need to initialize these parameters for training and prediction:  
 `n`, `m`, `t`, `activation_func`, `epochs`, `learning_rate`, `stockdata`  
