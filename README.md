@@ -53,15 +53,16 @@ Each row represents `a stock` and each column represent `a day`.
 >>> df = pd.read_csv('company_list.csv')
 >>> list_of_stock_symbol = df['Symbol'][:50]  # first fifty stocks in the company list provided.
 >>> asset_pool_pd = sp.dataframe_of_stocks(list_of_stock_symbol)
+>>> asset_pool_pd=asset_pool_pd.T
 >>> asset_pool_pd.head()
-   IOTS     AEY   ADUS  ADAP  ADMP  ...    SRCE   FCCY   FLWS  TURN   PIH
-1  5.31  1.3300  74.22  6.16  3.05  ...   48.36  19.78  12.51  1.95  5.01
-2  5.14  1.3385  75.58  5.95  2.77  ...   47.72  20.05  12.81  1.96  5.10
-3  5.14  1.3385  73.99  5.15  2.75  ...   48.00  20.05  12.78  2.00  5.14
-4  5.27  1.3500  71.75  5.11  2.65  ...   47.00  20.01  12.46  1.98  5.10
-5  5.40  1.3501  68.44  5.29  2.58  ...   47.62  19.52  12.55  2.01  5.11
+        0        1        2      3    ...      249      250    251    252
+IOTS   5.31   5.1400   5.1400   5.27  ...     7.55   7.3500   7.85   8.20
+AEY    1.33   1.3385   1.3385   1.35  ...     1.48   1.4504   1.49   1.50
+ADUS  74.22  75.5800  73.9900  71.75  ...    32.20  33.4000  33.15  33.30
+ADAP   6.16   5.9500   5.1500   5.11  ...     7.80   7.9300   8.10   8.28
+ADMP   3.05   2.7700   2.7500   2.65  ...     4.75   4.0000   4.05   3.80
 
-[5 rows x 44 columns]
+[5 rows x 253 columns]
 ```
 
 ### Step2: Set the parameter `tolerance`
@@ -74,11 +75,35 @@ For example:
 ```python
 >>> from eigen import calculate_eigens 
 >>> evalist,vlist=calculate_eigens(asset_pool_pd,tolerance)
+>>> len(evalist)
+44
+>>> len(vlist)
+44
+>>> len(vlist[0])
+44
 ```
 We can take an insight into the module `eigen` and function `calculate_eigens`  
 ```python
 >>> import eigen
 >>> dir(eigen)
+['__builtins__',
+ '__cached__',
+ '__doc__',
+ '__file__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__spec__',
+ '__warningregistry__',
+ '_eigenvalue',
+ '_estimate_spectrum',
+ 'calculate_cov',
+ 'calculate_eigens',
+ 'calculate_return_rate',
+ 'np',
+ 'pd',
+ 'sys',
+ 'time']
 ```
 It includes the following three steps:  
 1. Calculate the return rate matrix
@@ -88,6 +113,15 @@ It includes the following three steps:
 ```python
 >>> import eigen 
 >>> asset_pool_return_pd=eigen.calculate_return_rate(asset_pool_pd)
+>>> asset_pool_return_pd.head()
+           1         2         3      ...          250       251       252
+IOTS -0.032015  0.000000  0.025292    ...    -0.026490  0.068027  0.044586
+AEY   0.006391  0.000000  0.008592    ...    -0.020000  0.027303  0.006711
+ADUS  0.018324 -0.021037 -0.030274    ...     0.037267 -0.007485  0.004525
+ADAP -0.034091 -0.134454 -0.007767    ...     0.016667  0.021438  0.022222
+ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
+
+[5 rows x 252 columns]
 ```
 #### Step3.2: Calculate the covariance matrix of rate of return
 ```python
