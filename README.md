@@ -136,7 +136,12 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 ### Step4: Generate lower-dimensional covariance matrix
 ```python
 >>> import eigen 
->>> lower_dim_mat=evalist*vlist
+>>> import numpy as np
+>>> lower_dim_mat=cov_matrix*np.array(vlist)
+>>> len(lower_dim_mat)
+44
+>>> len(lower_dim_mat[0])
+44
 ```
 
 ## Build Neural Network to analyze stock portfolios
