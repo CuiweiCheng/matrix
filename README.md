@@ -237,6 +237,12 @@ The output data `Y_hat` is the prediction value of the return on day `t to end` 
 ```python
 >>> import NeuralNetwork 
 >>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, gap, activation_func, epochs, learning_rate,stockdata)
+...
+i =  197 cost =  260077.64649913702 avg_unit_cost 1.0898143112717564
+i =  198 cost =  260075.66944655115 avg_unit_cost 1.0898060267450729
+i =  199 cost =  260074.63100280968 avg_unit_cost 1.0898016753105448
+>>> Y_hat.shape
+(947, 241)
 ```
 
 ## Optimize the portfolios by Quadratic Optimization
