@@ -16,7 +16,7 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 - [Optimize the portfolios by large-scale Quadratic Optimization based on Markowitz Model and Backtesting based on historical market data](#optimize-the-portfolios-by-quadratic-optimization)
 
 ## Get time series of stock prices by Web Crawler
-### Download cvs file of a stock
+### Download csv file of a stock
 Enter a string of stock symbol, a csv file will be downloaded automatically into the current path
 
 Company / Index|Symbol                                                                                                                                             
@@ -214,22 +214,25 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
 We need to initialize these parameters for training and prediction:  
-`n`, `m`, `t`, `activation_func`, `epochs`, `learning_rate`, `stockdata`  
+`n`, `m`, `t`, `gap`, `activation_func`, `epochs`, `learning_rate`, `stockdata`  
 `n`: number of assets, integer  
 `m`: number of neural nodes in hidden layers, integer  
+`t` : set the first `t` days return data of `n` assets as the traing dataset
+`gap` : we use data of day `t` to predict data of day `t+gap`, integer
 `activation_func`: type of activation function, string  
 (We define three types of activation function in this module: `'tanh'`, `'relu'`, `'sigmoid'`)  
 `epochs`: number of iterations in training  
-`learning_rate`: stride in backpropogation affecting the update amount of parameters (vector 'W' and 'b' on each arc) in Neural Network  
-`stockdata`: n rows and 
+`learning_rate`: stride in backpropogation affecting the update amount of parameters (vector 'W' and 'b' on each arc) in Neural Network 
+`stockdata`: `n` rows (assets) and several colomns (days) 
 
 ```python
 >>> import NeuralNetwork 
->>> n=947; m=50; epochs=1000, learning_rate=0.0000001, stockdata=asset_pool_return_pd
+>>> n=947; m=50; epochs=1000; gap=10; activation_func='tanh'; learning_rate=0.0000001; stockdata=asset_pool_return_pd
 ```
 
 ### Step2: Predict stock price
-In this step, we first train the Neural Network by using the first half days of return data and then predict the second half days of return given the `n` return data on day `t` as input data. The output data is the prediction value of the return.
+In this step, we first train the Neural Network by using the first `0 to t` days of return data. We 
+and then predict the second half days of return given the `n` return data on day `t` as input data. The output data is the prediction value of the return.
 ```python
 >>> import NeuralNetwork 
 >>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, "relu", epochs, learning_rate,stockdata)
