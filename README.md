@@ -45,12 +45,22 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 ```
 ## Analyze stock prices by exploratory data analysis and plotting K-line graph
 ### Step1: Get the price of stocks
+#### Step1.1: Import data
+#### Step1.2: Get a basic description
+#### Step1.3: Deal with missing value
 ### Step2: Visualize time series of data
+#### Step2.1: Plot the closing prices and simple moving average
+#### Step2.2: Investigate the correlation
 ### Step3: Plot K-line graph
+download a matplotlib.finance
+
 
 ## Investigate indicators of stock prices
 ### Step1: Get the price of stocks
 ### Step2: Financial Analyses
+First analyze the indicators of stocks simultaneously. Investigate the correlations between different indicators
+Also, create a class to figure out the indicator for indivdual stock
+
 Analyze six indicators:
 
 Indicators |Method   
