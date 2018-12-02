@@ -177,7 +177,12 @@ Set (or calculated from original stock price data) the covariance matrix of the 
 >>> import quadratic_opt from quadratic   
 >>> mu=asset_pool_return_pd.mean(axis=1)
 >>> mu.head()
-
+IOTS    0.002731
+AEY     0.000636
+ADUS   -0.002932
+ADAP    0.002174
+ADMP    0.002430
+dtype: float64
 >>> mu=mu.value
 ```
 ### Step2: Utilize `First Order Method` and iterate enough times to achieve optimal weight of `n` stocks
