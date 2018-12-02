@@ -98,18 +98,23 @@ We need to initialize these parameters for training and prediction:
 `n`: number of assets, integer  
 `m`: number of neural nodes in hidden layers, integer  
 `activation_func`: type of activation function, string  
-(We define three types of activation function in this module: `'tanh'`, `'relu'`, `'sigmoid'`)
+(We define three types of activation function in this module: `'tanh'`, `'relu'`, `'sigmoid'`)  
 `epochs`: number of iterations in training  
-`learning_rate`: stride in backpropogation affecting the update amount of parameters ('W' and 'b' on each arc) in Neural Network
+`learning_rate`: stride in backpropogation affecting the update amount of parameters (vector 'W' and 'b' on each arc) in Neural Network  
 `stockdata`: 
 
 ```python
 >>> import NeuralNetwork 
->>>  
+>>> n=947; m=50; 
+m,t, activation_func, epochs, learning_rate,stockdata
 ```
 
 ### Step2: Predict stock price
 
+```python
+>>> import NeuralNetwork 
+>>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, "relu", epochs, learning_rate,stockdata)
+```
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
 Set the lower bounds, upper bounds and expected return rate for `n` stocks.   
