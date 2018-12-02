@@ -86,6 +86,7 @@ Analysze Apple, Tesla, Goldman Sachs and Microsoft
 >>>import k_plot
 >>>k_plot.plot_k_line('AAPL')
 ```
+![image](http://github.com/CuiweiCheng/matrix/raw/master/k_line.png)
 
 ## Investigate indicators of stock prices
 ### Step1: Get the price of stocks
