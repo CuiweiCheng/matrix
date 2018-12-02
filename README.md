@@ -231,12 +231,14 @@ We need to initialize these parameters for training and prediction:
 ```
 
 ### Step2: Predict stock price
-In this step, we first train the Neural Network by using the first `0 to t` days of return data. We 
-and then predict the second half days of return given the `n` return data on day `t` as input data. The output data is the prediction value of the return.
+In this step, we first train the Neural Network by using the first `0 to t` days of return data.   
+We use data on day `i` to train data on day `i+gap` and then utilize the trained NN model to predict the second part `t to end` days of return.   
+The output data `Y_hat` is the prediction value of the return on day `t to end` and the `total_cost` (sum square of error of each day and each asset).
 ```python
 >>> import NeuralNetwork 
->>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, "relu", epochs, learning_rate,stockdata)
+>>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, gap, activation_func, epochs, learning_rate,stockdata)
 ```
+
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
 Set the  `lower bounds`, `upper bounds` and `mu`(which is expected return rate for `n` stocks.   
