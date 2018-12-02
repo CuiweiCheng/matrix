@@ -105,12 +105,11 @@ We need to initialize these parameters for training and prediction:
 
 ```python
 >>> import NeuralNetwork 
->>> n=947; m=50; 
-m,t, activation_func, epochs, learning_rate,stockdata
+>>> n=947; m=50; epochs=1000, learning_rate=0.0000001, stockdata=asset_pool_return_pd
 ```
 
 ### Step2: Predict stock price
-
+In this step, we first train the Neural Network by using the first half days of return data and then predict the second half days of return given the `n` return data on day `t` as input data. The output data is the 
 ```python
 >>> import NeuralNetwork 
 >>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, "relu", epochs, learning_rate,stockdata)
