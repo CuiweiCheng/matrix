@@ -133,7 +133,8 @@ ADMP   3.05   2.7700   2.7500   2.65  ...     4.75   4.0000   4.05   3.80
 ```
 
 ### Step2: Set the parameter `tolerance`
-Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than `tolerance*the max eigenvalue`, we stop calculating the `eigenvalue` because the following eigenvalue is too small and trivial.
+Set the `tolerance` as the stopping condition for calculating **eigenvalue**: If the current eigenvalue is less than   
+`tolerance*the max eigenvalue`, we stop calculating the `eigenvalue` because the following eigenvalue is too small and trivial.  
 For example:  
 ```python
 >>> tolerance=0.0000001
@@ -210,6 +211,7 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 >>> len(lower_dim_mat[0])
 44
 ```
+Therefore, the `lower_dim_mat` is now the dimension-reduced covariance matrix
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
@@ -244,6 +246,7 @@ i =  199 cost =  260074.63100280968 avg_unit_cost 1.0898016753105448
 >>> Y_hat.shape
 (947, 241)
 ```
+Therefore, `Y_hat` has prediction return of `947` asset on `241` days
 
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
