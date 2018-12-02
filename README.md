@@ -89,7 +89,10 @@ It includes the following three steps:
 >>> [evalist, vlist] =eigen._estimate_spectrum(cov_matrix, tolerance)
 ```
 ### Step4: Generate lower-dimensional covariance matrix
-
+```python
+>>> import eigen 
+>>> lower_dim_mat=evalist*vlist
+```
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
@@ -128,7 +131,9 @@ Set (or calculated from original stock price data) the covariance matrix of the 
 >>> mu=mu.value
 ```
 ### Step2: Utilize `First Order Method` and iterate enough times to achieve optimal weight of `n` stocks
-
-
-We then get the optimal weight of `n` stocks and the corresponding minimum value of the portfolio based on these `n` stocks  
+```python
+>>> import quadratic_opt from quadratic   
+>>> quadratic_opt(n,lam,matrix,covariance)
+```
+We then get the optimal weight of `n` stocks and the corresponding minimum value of the Markowitz's Objective Function these weights of `n` stocks. Therefore, since we have the optimal weight of the `n` stocks, we can base on this weight to construct the portfolio and conduct further analysis.
 
