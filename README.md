@@ -30,7 +30,7 @@ Company / Index|Symbol
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks
-Assume we have `m` daily price of `n` stocks stored in asset_pool_pd, which is a `pd.DataFrame` having `n` rows x `m` columns
+Assume we have `m` daily price of `n` stocks stored in `asset_pool_pd`, which is a `pd.DataFrame` having `n` rows x `m` columns
 For example, let `asset_pool_pd` be a `pd.DataFrame` which has `947` rows x `504` columns. 
 
 Each row represents `a stock` and each column represent `a day`.
@@ -45,12 +45,15 @@ For example:
 >>> from eigen import calculate_eigens 
 >>> evalist,vlist=calculate_eigens(asset_pool_pd,tolerance)
 ```
-We can take an insight into the function `calculate_eigens`  
+We can take an insight into the module `eigen` and function `calculate_eigens`  
 ```python
 >>> import eigen
 >>> dir(eigen)
 ```
-It includes three steps: calculate 
+It includes the following three steps:  
+1. Calculate the return rate matrix
+2. Calculate covariance matrix of rate of return  
+3. Calculate eigenvalues and eigenvectors  
 #### Step3.1 Calculate rate of return
 ```python
 >>> import eigen 
@@ -61,8 +64,11 @@ It includes three steps: calculate
 >>> import eigen 
 >>> cov_matrix=eigen.calculate_cov(asset_pool_return_pd)
 ```
-#### Step3.2: Calculate the covariance matrix of rate of return
-
+#### Step3.3: Calculate eigenvalues and eigenvectors
+```python
+>>> import eigen 
+>>> [evalist, vlist] =eigen._estimate_spectrum(cov_matrix, tolerance)
+```
 ### Step4: Generate lower-dimensional covariance matrix
 
 
