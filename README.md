@@ -45,18 +45,56 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 ```
 ## Analyze stock prices by exploratory data analysis and plotting K-line graph
 ### Step1: Get the price of stocks
+Analysze Apple, Tesla, Goldman Sachs and Microsoft
 #### Step1.1: Import data
+```python
+>>>import pandas_datareader.data as wb
+>>>aapl = wb.DataReader('AAPL', 'yahoo', start, end)
+>>>df = wb.DataReader(['AAPL','TSLA','GS','MS'], 'yahoo', start, end)
+>>>df.info()
+>>>df.describe()
+```
 #### Step1.2: Get a basic description
+```python
+>>>df.info()
+>>>df.describe()
+```
+
 #### Step1.3: Deal with missing value
+```python
+>>>aapl.interpolate()
+```
 ### Step2: Visualize time series of data
+```python
+>>>aapl['Close'].plot(grid=True)
+>>>plt.show()
+```
 #### Step2.1: Plot the closing prices and simple moving average
+```python
+>>>tickers = ['AAPL', 'TSLA', 'MS', 'GS']
+>>>for tick in tickers:
+>>>    df['Adj Close'][tick].plot(figsize=(12,4),label=tick)
+>>>plt.legend()
+```
 #### Step2.2: Investigate the correlation
+```python
+>>>import seaborn as sns
+>>>sns.heatmap(df.xs(key='Adj Close',axis=1,level='Attributes').corr(),annot=True)
+```
 ### Step3: Plot K-line graph
 download a matplotlib.finance
+
+git clone https://github.com/matplotlib/mpl_finance.git
+cd mpl_finance/
+python setup.py build
+python setup.py install
+from matplotlib.finance import candlestick_ochl
+--> from mpl_finance import candlestick_ochl
 
 
 ## Investigate indicators of stock prices
 ### Step1: Get the price of stocks
+
 ### Step2: Financial Analyses
 First analyze the indicators of stocks simultaneously. Investigate the correlations between different indicators
 Also, create a class to figure out the indicator for indivdual stock
@@ -71,6 +109,7 @@ Indicators |Method
 **Simple Moving Average**|**get_SMA**
 **Rate of Return**|**get_ROC**
 **Force Index**|**get_FI**
+
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks
@@ -173,7 +212,6 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 ```
 
 ## Build Neural Network to analyze stock portfolios
-In this module, we want to utilize a simple Neural Network model to train historical return data of `n` assets to conduct a shrot-term prediction(e.g. 10 days prediction) on the return of `n` assets.
 ### Step1: Set parameter for the Neural Network
 We need to initialize these parameters for training and prediction:  
 `n`, `m`, `t`, `activation_func`, `epochs`, `learning_rate`, `stockdata`  
