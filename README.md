@@ -82,14 +82,11 @@ Analysze Apple, Tesla, Goldman Sachs and Microsoft
 >>>sns.heatmap(df.xs(key='Adj Close',axis=1,level='Attributes').corr(),annot=True)
 ```
 ### Step3: Plot K-line graph
-download a matplotlib.finance
-
-git clone https://github.com/matplotlib/mpl_finance.git
-cd mpl_finance/
-python setup.py build
-python setup.py install
-from matplotlib.finance import candlestick_ochl
---> from mpl_finance import candlestick_ochl
+```python
+>>>import k_plot
+>>>k_plot.plot_k_line('AAPL')
+```
+![image](https://github.com/CuiweiCheng/matrix/raw/master/k_line.jpg)
 
 
 ## Investigate indicators of stock prices
