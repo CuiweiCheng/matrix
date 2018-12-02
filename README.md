@@ -101,7 +101,7 @@ We need to initialize these parameters for training and prediction:
 (We define three types of activation function in this module: `'tanh'`, `'relu'`, `'sigmoid'`)  
 `epochs`: number of iterations in training  
 `learning_rate`: stride in backpropogation affecting the update amount of parameters (vector 'W' and 'b' on each arc) in Neural Network  
-`stockdata`: 
+`stockdata`: n rows and 
 
 ```python
 >>> import NeuralNetwork 
@@ -109,16 +109,26 @@ We need to initialize these parameters for training and prediction:
 ```
 
 ### Step2: Predict stock price
-In this step, we first train the Neural Network by using the first half days of return data and then predict the second half days of return given the `n` return data on day `t` as input data. The output data is the 
+In this step, we first train the Neural Network by using the first half days of return data and then predict the second half days of return given the `n` return data on day `t` as input data. The output data is the prediction value of the return.
 ```python
 >>> import NeuralNetwork 
 >>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, "relu", epochs, learning_rate,stockdata)
 ```
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
-Set the lower bounds, upper bounds and expected return rate for `n` stocks.   
-Set `lambda` denoting the risk preference in the Markov Model:   
-Set (or calculated from original stock price data) the covariance matrix of the `n` stocks  
+Set the  `lower bounds`, `upper bounds` and `mu`(which is expected return rate for `n` stocks.   
+Set `lambda` denoting the risk preference in the Markowitz Model:   
+Set (or calculated from original stock price data) the covariance matrix of the `n` stocks 
+
+```python
+>>> import quadratic_opt from quadratic   
+>>> mu=asset_pool_return_pd.mean(axis=1)
+>>> mu.head()
+
+>>> mu=mu.value
+```
 ### Step2: Utilize `First Order Method` and iterate enough times to achieve optimal weight of `n` stocks
+
+
 We then get the optimal weight of `n` stocks and the corresponding minimum value of the portfolio based on these `n` stocks  
 
