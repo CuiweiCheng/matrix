@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e849b3d-f62c-43b7-8976-fdd669a6795e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/company_list.csv" beforeDir="false" afterPath="$PROJECT_DIR$/company_list.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_price.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_price.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
@@ -17,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stock_price.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            <state relative-caret-position="338">
+              <caret line="61" column="58" selection-start-line="61" selection-start-column="58" selection-end-line="61" selection-end-column="58" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -29,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="240">
+              <caret line="16" column="8" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
               <folding>
                 <element signature="e#0#6#0" expanded="true" />
               </folding>
@@ -44,8 +43,8 @@
             <state showInfoPanel="true" rowLines="3" />
           </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="47">
-              <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+            <state relative-caret-position="152">
+              <caret line="18" column="3" selection-start-line="18" selection-end-line="18" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -63,6 +62,7 @@
     <findStrings>
       <find>tsla</find>
       <find>alzh</find>
+      <find>abp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -72,8 +72,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/company_list.csv" />
-        <option value="$PROJECT_DIR$/stock_price.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/stock_price.py" />
       </list>
     </option>
   </component>
@@ -185,12 +185,12 @@
     <frame x="70" y="93" width="1550" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17200784" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17200784" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31847134" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31847134" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -226,8 +226,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/companylist (1).csv" />
     <entry file="file://$PROJECT_DIR$/chh.csv" />
-    <entry file="file://$PROJECT_DIR$/FLWS.csv" />
-    <entry file="file://$PROJECT_DIR$/PIH.csv" />
     <entry file="file://$PROJECT_DIR$/companylist.csv" />
     <entry file="file://$PROJECT_DIR$/job.csv" />
     <entry file="file://$PROJECT_DIR$/spx.csv" />
@@ -237,19 +235,58 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/AAPL.csv">
+    <entry file="file://$PROJECT_DIR$/AAPL.csv" />
+    <entry file="file://$PROJECT_DIR$/ALZH.csv" />
+    <entry file="file://$PROJECT_DIR$/ACCP.csv" />
+    <entry file="file://$PROJECT_DIR$/YI.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" rowLines="3" />
       </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-475" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TURN.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-3415" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SRCE.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-3415" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PIH.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-3415" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FLWS.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-3415" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FCCY.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-3415" />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ABP.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ALZH.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" rowLines="3" />
       </provider>
@@ -260,25 +297,15 @@
         <state showInfoPanel="true" rowLines="3" />
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="47">
-          <caret line="138" column="41" lean-forward="true" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ACCP.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state>
-          <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
+        <state relative-caret-position="152">
+          <caret line="18" column="3" selection-start-line="18" selection-end-line="18" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="240">
+          <caret line="16" column="8" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding>
             <element signature="e#0#6#0" expanded="true" />
           </folding>
@@ -287,8 +314,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stock_price.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        <state relative-caret-position="338">
+          <caret line="61" column="58" selection-start-line="61" selection-start-column="58" selection-end-line="61" selection-end-column="58" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
