@@ -317,3 +317,5 @@ array([35.34655418, 35.84909189, 34.83459665, 33.84750544, 32.47909014,
 >>> max_drawdown(ppo)
 0.5217494113999498
 ```
+**Combine Quadratic Optimization with PCA to construct portfolio**  
+
