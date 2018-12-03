@@ -179,16 +179,17 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 >>> [evalist, vlist] =eigen._estimate_spectrum(cov_matrix, tolerance)
 ```
 ### Step4: Generate lower-dimensional covariance matrix
+We can now select the top `k` eigenvector to reduce dimensions.  
+Example below assume `k=10`
 ```python
 >>> import eigen 
 >>> import numpy as np
->>> lower_dim_mat=cov_matrix*np.array(vlist)
->>> len(lower_dim_mat)
-44
->>> len(lower_dim_mat[0])
-44
+>>> k=10
+>>> lower_dim_mat=reduce_dimension(asset_pool_pd,vlist,k)
+>>> lower_dim_mat.shape
+(253, 10)
 ```
-Therefore, the `lower_dim_mat` is now the dimension-reduced covariance matrix
+Therefore, the `lower_dim_mat` is now the dimension-reduced matrix from original daily price data `asset_pool_pd`, which reduce the `947` stocks to `10` principal stocks with still holding `253` days data
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
@@ -234,7 +235,7 @@ Set the  `lower bounds`, `upper bounds` and `mu`(which is expected return rate f
 >>> import pandas as pd
 >>> covariance=pd.DataFrame(cov_matrix)
 >>> n=len(covariance)
->>> lower=np.array([random.uniform(0, 0.1) for i in range(n)])
+>>> lower=np.array([random.uniform(0, 0.05) for i in range(n)])
 >>> upper=np.array([random.uniform(0.9, 1) for i in range(n)])
 >>> mu=asset_pool_return_pd.mean(axis=1)
 >>> mu.head()
@@ -260,8 +261,88 @@ Set (or calculated from original stock price data) the covariance matrix of the 
 >>> from quadratic import quadratic_opt 
 >>> n=len(covariance)
 >>> matrix=np.vstack((lower,upper,mu)).T
->>> matrix=pd.DataFrame(data=lp,columns=['lower', 'upper', 'mu'])
->>> x_new, F_new = quadratic_opt(n,lam,matrix,covariance)
+>>> matrix=pd.DataFrame(data=matrix,columns=['lower', 'upper', 'mu'])
+>>> result = quadratic_opt(n,lam,matrix,covariance)
+>>> if type(result)!=str:
+        x_new = result[0]
+        F_new = result[1]
+    else:
+        print('Output message is', result)
 ```
 We then get the optimal weight of `n` stocks and the corresponding minimum value of the Markowitz's Objective Function. Therefore, since we have the optimal weight of the `n` stocks, we can base on this weight to construct the portfolio and conduct further analysis.
 
+**One small-scale example (4 assets):**
+```python
+>>> from quadratic import quadratic_opt 
+>>> n=4
+>>> lam=10
+>>> matrix
+         lower  upper     mu
+asset_1  0.010    0.5  20.00
+asset_2  0.000    1.0   0.04
+asset_3  0.005    1.0   0.10
+asset_4  0.030    0.4  -0.05
+>>> covariance
+         asset_1  asset_2  asset_3  asset_4
+asset_1    54.00     -0.3    -0.02     0.00
+asset_2    -0.30     12.0     0.50     1.00
+asset_3    -0.02      0.5     4.00     0.30
+asset_4     0.00      1.0     0.30     0.02
+>>> x_new, F_new = quadratic_opt(n,lam,matrix,covariance)
+...
+x= [0.05486039 0.10914633 0.43694331 0.39904997] F= 11.946741691325817
+x= [0.0547931  0.10986011 0.4362954  0.39905139] F= 11.946661522359891
+x= [0.0545109  0.10916799 0.43726374 0.39905737] F= 11.946527345603972
+>>> x_new
+array([0.0545109 , 0.10916799, 0.43726374, 0.39905737])
+```
+**Further backtesting**  
+We can now calculating the historic value and maximum drawdown of the portfolio based on these weights of `n` assets.  
+In the module `quadratic`, we provide the method `backtest` and `max_drawdown` to calculate and plot.   
+Above example continues:
+```python
+>>> from quadratic import backtest, max_drawdown
+>>> p_mat=asset_pool_pd.values[0:4]
+>>> p_mat=asset_pool_pd
+array([[ 5.31  ,  5.14  ,  5.14  , ...,  7.35  ,  7.85  ,  8.2   ],
+       [ 1.33  ,  1.3385,  1.3385, ...,  1.4504,  1.49  ,  1.5   ],
+       [74.22  , 75.58  , 73.99  , ..., 33.4   , 33.15  , 33.3   ],
+       [ 6.16  ,  5.95  ,  5.15  , ...,  7.93  ,  8.1   ,  8.28  ]])
+>>> value_port=backtest(x_new,p_mat)
+>>> value_port
+array([35.34655418, 35.84909189, 34.83459665, 33.84750544, 32.47909014,
+       32.57250577, 32.98604229, 32.79489458, 33.06224579, 34.20150541,
+       ...
+       17.7890263 , 18.35813423, 17.98212881, 17.6029267 , 17.76566572,
+       18.3281261 , 18.31822843, 18.47581881])
+>>> max_drawdown(value_port)
+0.5217494113999498
+```
+**Another example: Combine Quadratic Optimization with PCA to construct portfolio**  
+We now have the `lower_dim_mat` generated from PCA. Then we can apply the quadratic optimization on this new **virtual daily price data**
+```python   
+>>> import random
+>>> import eigen 
+>>> import numpy as np
+>>> import pandas as pd
+>>> from quadratic import quadratic_opt 
+
+>>> asset_pool_return_pd=eigen.calculate_return_rate(lower_dim_mat)
+>>> cov_matrix=eigen.calculate_cov(asset_pool_return_pd)
+>>> covariance=pd.DataFrame(cov_matrix)
+>>> n=len(covariance)
+>>> lower=np.array([random.uniform(0, 0.1) for i in range(n)])
+>>> upper=np.array([random.uniform(0.9, 1) for i in range(n)])
+>>> mu=asset_pool_return_pd.mean(axis=1)
+>>> mu=mu.values
+
+>>> matrix=np.vstack((lower,upper,mu)).T
+>>> matrix=pd.DataFrame(data=matrix,columns=['lower', 'upper', 'mu'])
+>>> result = quadratic_opt(n,lam,matrix,covariance)
+>>> if type(result)!=str:
+        x_new = result[0]
+        F_new = result[1]
+    else:
+        print('Output message is', result)
+```
+Therefore, now `x_new` is the optimal vector of weights for `lower_dim_mat` with `k-dimension` 
