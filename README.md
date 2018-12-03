@@ -83,6 +83,7 @@ Indicators |Method
 **Force Index**|**get_FI**
 
 ```python
+>>> import indicator
 >>> x = indicator.Indicator('AAPL')
 >>> x.get_Volume()
 ```
@@ -94,6 +95,7 @@ Assume we have `m` daily price of `n` stocks stored in `asset_pool_pd`, which is
 For example, let `asset_pool_pd` be a `pd.DataFrame` which has `947` rows x `504` columns. 
 Each row represents `a stock` and each column represent `a day`.
 ```python
+>>> import pandas as pd
 >>> df = pd.read_csv('company_list.csv')
 >>> list_of_stock_symbol = df['Symbol'][:50]  # first fifty stocks in the company list provided.
 >>> asset_pool_pd = sp.dataframe_of_stocks(list_of_stock_symbol)
