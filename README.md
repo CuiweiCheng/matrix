@@ -270,7 +270,7 @@ Set (or calculated from original stock price data) the covariance matrix of the 
 ```
 We then get the optimal weight of `n` stocks and the corresponding minimum value of the Markowitz's Objective Function. Therefore, since we have the optimal weight of the `n` stocks, we can base on this weight to construct the portfolio and conduct further analysis.
 
-**One small scale example (4 assets):**
+**One small-scale example (4 assets):**
 ```python
 >>> from quadratic import quadratic_opt 
 >>> n=4
@@ -295,5 +295,8 @@ x= [0.0545109  0.10916799 0.43726374 0.39905737] F= 11.946527345603972
 >>> x_new
 array([0.0545109 , 0.10916799, 0.43726374, 0.39905737])
 ```
+**Further backtesting**
+We can now calculating the historic value of the portfolio based on these weights of `n` assets.  
+In the module `quadratic`, we provide the method `backtest` to calculate and plot
 
 
