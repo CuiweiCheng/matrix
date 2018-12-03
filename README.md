@@ -71,8 +71,6 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 
 
 ## Investigate indicators of stock prices
-
-### Step2: Financial Analyses
 Analyze six indicators:
 
 Indicators |Method   
