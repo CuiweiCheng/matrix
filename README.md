@@ -258,9 +258,11 @@ Set (or calculated from original stock price data) the covariance matrix of the 
 ```
 ### Step2: Utilize `First Order Method` and iterate enough times to achieve optimal weight of `n` stocks
 ```python
->>> n=len(covariance)
 >>> from quadratic import quadratic_opt 
->>> x_new, F_new = quadratic_opt(n,lam,lower,upper,mu,covariance)
+>>> n=len(covariance)
+>>> matrix=np.vstack((lower,upper,mu)).T
+>>> matrix=pd.DataFrame(data=lp,columns=['lower', 'upper', 'mu'])
+>>> x_new, F_new = quadratic_opt(n,lam,matrix,covariance)
 ```
 We then get the optimal weight of `n` stocks and the corresponding minimum value of the Markowitz's Objective Function. Therefore, since we have the optimal weight of the `n` stocks, we can base on this weight to construct the portfolio and conduct further analysis.
 
