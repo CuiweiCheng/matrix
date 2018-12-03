@@ -213,7 +213,7 @@ We need to initialize these parameters for training and prediction:
 
 ```python
 >>> import NeuralNetwork 
->>> n=947; m=50; epochs=1000; gap=10; activation_func='tanh'; learning_rate=0.0000001; stockdata=asset_pool_return_pd
+>>> n=44; m=50; epochs=1000; gap=3; activation_func='tanh'; learning_rate=0.0000001; stockdata=asset_pool_return_pd; t=10
 ```
 
 ### Step2: Predict stock price
@@ -224,13 +224,13 @@ The output data `Y_hat` is the prediction value of the return on day `t to end` 
 >>> import NeuralNetwork 
 >>> Y_hat, total_cost=NeuralNetwork.NNPredict(n,m,t, gap, activation_func, epochs, learning_rate,stockdata)
 ...
-i =  197 cost =  260077.64649913702 avg_unit_cost 1.0898143112717564
-i =  198 cost =  260075.66944655115 avg_unit_cost 1.0898060267450729
-i =  199 cost =  260074.63100280968 avg_unit_cost 1.0898016753105448
+i =  997 cost =  7.101546276402318 avg_unit_cost 2.975790833376208e-05
+i =  998 cost =  7.101546943819563 avg_unit_cost 2.975791113046866e-05
+i =  999 cost =  7.101547612308513 avg_unit_cost 2.975791393166605e-05
 >>> Y_hat.shape
-(947, 241)
+(44, 239)
 ```
-Therefore, `Y_hat` has prediction return of `947` asset on `241` days
+Therefore, `Y_hat` has prediction return of `44` asset on `239` days
 
 ## Optimize the portfolios by Quadratic Optimization
 ### Step1: Set parameters
