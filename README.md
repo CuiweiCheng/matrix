@@ -1,7 +1,7 @@
-# Group name: The Matrix
+# Group Name: The Matrix
 # Class Section: IEOR E4501 Tools for Analytics Section1 
 
-# Matrix
+# Purpose of the project
 We propose to investigate the indicators of stocks, construct and optimize a stock portfolio to yield a higher return by creating a python financial analysis library. The library consists of time series analysis, a Web Crawler, an Exploratory Data Analysis, and Model Buildings.
 
 ## Functions of our project
