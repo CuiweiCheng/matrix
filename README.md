@@ -1,7 +1,7 @@
 # Group Name: The Matrix  
 ## Team members:  
 Cuiwei Cheng / cc4309  
-Jian ji / jj2985  
+Jian Ji / jj2985  
 Ellie Li / yl3883  
 Yijie Fu / yf2474
 ## Class Section: IEOR E4501 Tools for Analytics Section1 
