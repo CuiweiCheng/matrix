@@ -174,6 +174,7 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 ```python
 >>> import eigen 
 >>> cov_matrix=eigen.calculate_cov(asset_pool_return_pd)
+It takes 0.010636419999968894 seconds to compute Cov matrix using our own algorithm.
 ```
 #### Step3.3: Calculate eigenvalues and eigenvectors
 ```python
@@ -187,7 +188,7 @@ Example below assume `k=10`
 >>> import eigen 
 >>> import numpy as np
 >>> k=10
->>> lower_dim_mat=reduce_dimension(asset_pool_pd,vlist,k)
+>>> lower_dim_mat=eigen.reduce_dimension(asset_pool_pd,vlist,k)
 >>> lower_dim_mat.shape
 (253, 10)
 ```
