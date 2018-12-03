@@ -296,7 +296,24 @@ x= [0.0545109  0.10916799 0.43726374 0.39905737] F= 11.946527345603972
 array([0.0545109 , 0.10916799, 0.43726374, 0.39905737])
 ```
 **Further backtesting**  
-We can now calculating the historic value of the portfolio based on these weights of `n` assets.  
-In the module `quadratic`, we provide the method `backtest` to calculate and plot
-
-
+We can now calculating the historic value and maximum drawdown of the portfolio based on these weights of `n` assets.  
+In the module `quadratic`, we provide the method `backtest` and `max_drawdown` to calculate and plot.   
+Above example continues:
+```python
+>>> from quadratic import backtest, max_drawdown
+>>> p_mat=asset_pool_pd.values[0:4]
+>>> p_mat=asset_pool_pd
+array([[ 5.31  ,  5.14  ,  5.14  , ...,  7.35  ,  7.85  ,  8.2   ],
+       [ 1.33  ,  1.3385,  1.3385, ...,  1.4504,  1.49  ,  1.5   ],
+       [74.22  , 75.58  , 73.99  , ..., 33.4   , 33.15  , 33.3   ],
+       [ 6.16  ,  5.95  ,  5.15  , ...,  7.93  ,  8.1   ,  8.28  ]])
+>>> value_port=backtest(x_new,p_mat)
+>>> value_port
+array([35.34655418, 35.84909189, 34.83459665, 33.84750544, 32.47909014,
+       32.57250577, 32.98604229, 32.79489458, 33.06224579, 34.20150541,
+       ...
+       17.7890263 , 18.35813423, 17.98212881, 17.6029267 , 17.76566572,
+       18.3281261 , 18.31822843, 18.47581881])
+>>> max_drawdown(ppo)
+0.5217494113999498
+```
