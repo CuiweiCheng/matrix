@@ -1,3 +1,5 @@
+# Group Name and Class Section
+
 # Matrix
 We propose to investigate the indicators of stocks, construct and optimize a stock portfolio to yield a higher return by creating a python financial analysis library. The library consists of time series analysis, a Web Crawler, an Exploratory Data Analysis, and Model Buildings.
 
