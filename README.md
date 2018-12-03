@@ -5,7 +5,9 @@ Jian ji / jj2985
 Ellie Li / yl3883  
 Yijie Fu / yf2474
 ## Class Section: IEOR E4501 Tools for Analytics Section1 
-
+#
+### All of our functions, examples and results can be viewed by simply running example.ipynb.
+#
 ## Purpose of the project
 We propose to investigate the indicators of stocks, construct and optimize a stock portfolio to yield a higher return by creating a python financial analysis library. The library consists of time series analysis, a Web Crawler, an Exploratory Data Analysis, and Model Buildings.
 
