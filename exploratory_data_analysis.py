@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas_datareader.data as wb
-import seaborn as sns
 
 
 class EDA(object):
