@@ -71,12 +71,8 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 
 
 ## Investigate indicators of stock prices
-### Step1: Get the price of stocks
 
 ### Step2: Financial Analyses
-First analyze the indicators of stocks simultaneously. Investigate the correlations between different indicators
-Also, create a class to figure out the indicator for indivdual stock
-
 Analyze six indicators:
 
 Indicators |Method   
@@ -88,6 +84,11 @@ Indicators |Method
 **Rate of Return**|**get_ROC**
 **Force Index**|**get_FI**
 
+```python
+>>> x = indicator.Indicator('AAPL')
+>>> x.get_Volume()
+```
+![image](https://github.com/CuiweiCheng/matrix/raw/master/images/get_volume.png)
 
 ## Build factor models and conduct PCA to construct stock portfolios
 ### Step1: Get the price of stocks

@@ -1,7 +1,7 @@
 import pandas as pd
 import stock_price as sp
 import exploratory_data_analysis as eda
-
+import indicator
 
 # # test for web crawler
 # sp.download_stock_price('AAPL')
@@ -17,8 +17,12 @@ import exploratory_data_analysis as eda
 # z = sp.dataframe_of_stocks(list_of_stock_symbol)
 # print(z)
 
-# test for EDA
-x = eda.EDA(['AAPL', 'TSLA', 'GS', 'MS'])
-x.compare_close_price()
-x.show_moving_avg()
-x.show_corr_map()
+# # test for EDA
+# x = eda.EDA(['AAPL', 'TSLA', 'GS', 'MS'])
+# x.compare_close_price()
+# x.show_moving_avg()
+# x.show_corr_map()
+
+# test for indicator
+x = indicator.Indicator('AAPL')
+x.get_Volume()
