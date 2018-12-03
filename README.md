@@ -295,7 +295,7 @@ x= [0.0545109  0.10916799 0.43726374 0.39905737] F= 11.946527345603972
 >>> x_new
 array([0.0545109 , 0.10916799, 0.43726374, 0.39905737])
 ```
-**Further backtesting**
+**Further backtesting**  
 We can now calculating the historic value of the portfolio based on these weights of `n` assets.  
 In the module `quadratic`, we provide the method `backtest` to calculate and plot
 
