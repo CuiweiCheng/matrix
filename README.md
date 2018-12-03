@@ -23,6 +23,9 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 
 - [Optimize the portfolios by large-scale Quadratic Optimization based on Markowitz Model and Backtesting based on historical market data](#optimize-the-portfolios-by-quadratic-optimization)
 
+## Install realavant packages before start  
+To successfully achive the purpose and realize functions of our project, python packages including pandas_datareader and mpl_finance are required to be installed.  
+
 ## Get time series of stock prices by Web Crawler
 ### Download csv file of a stock
 Enter a string of stock symbol, a csv file will be downloaded automatically into the current path
