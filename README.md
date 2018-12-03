@@ -261,7 +261,39 @@ Set (or calculated from original stock price data) the covariance matrix of the 
 >>> n=len(covariance)
 >>> matrix=np.vstack((lower,upper,mu)).T
 >>> matrix=pd.DataFrame(data=matrix,columns=['lower', 'upper', 'mu'])
->>> x_new, F_new = quadratic_opt(n,lam,matrix,covariance)
+>>> result = quadratic_opt(n,lam,matrix,covariance)
+>>> if type(result)!=str:
+        x_new = result[0]
+        F_new = result[1]
+    else:
+        print('Output message is', result)
 ```
 We then get the optimal weight of `n` stocks and the corresponding minimum value of the Markowitz's Objective Function. Therefore, since we have the optimal weight of the `n` stocks, we can base on this weight to construct the portfolio and conduct further analysis.
+
+**One small scale example (4 assets):**
+```python
+>>> from quadratic import quadratic_opt 
+>>> n=4
+>>> lam=10
+>>> matrix
+         lower  upper     mu
+asset_1  0.010    0.5  20.00
+asset_2  0.000    1.0   0.04
+asset_3  0.005    1.0   0.10
+asset_4  0.030    0.4  -0.05
+>>> covariance
+         asset_1  asset_2  asset_3  asset_4
+asset_1    54.00     -0.3    -0.02     0.00
+asset_2    -0.30     12.0     0.50     1.00
+asset_3    -0.02      0.5     4.00     0.30
+asset_4     0.00      1.0     0.30     0.02
+>>> x_new, F_new = quadratic_opt(n,lam,matrix,covariance)
+...
+x= [0.05486039 0.10914633 0.43694331 0.39904997] F= 11.946741691325817
+x= [0.0547931  0.10986011 0.4362954  0.39905139] F= 11.946661522359891
+x= [0.0545109  0.10916799 0.43726374 0.39905737] F= 11.946527345603972
+>>> x_new
+array([0.0545109 , 0.10916799, 0.43726374, 0.39905737])
+```
+
 
