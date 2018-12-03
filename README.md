@@ -189,7 +189,7 @@ Example below assume `k=10`
 >>> lower_dim_mat.shape
 (253, 10)
 ```
-Therefore, the `lower_dim_mat` is now the dimension-reduced matrix from original daily price data `asset_pool_pd`
+Therefore, the `lower_dim_mat` is now the dimension-reduced matrix from original daily price data `asset_pool_pd`, which reduce the `947` stocks to `10` principal stocks with still holding `253` days data
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
@@ -319,4 +319,4 @@ array([35.34655418, 35.84909189, 34.83459665, 33.84750544, 32.47909014,
 0.5217494113999498
 ```
 **Combine Quadratic Optimization with PCA to construct portfolio**  
-
+We now have the `lower_dim_mat` generated from PCA. Then we can apply the quadratic optimization on this new **virtual daily price data**
