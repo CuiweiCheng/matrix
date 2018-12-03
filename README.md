@@ -23,7 +23,7 @@ We propose to investigate the indicators of stocks, construct and optimize a sto
 
 - [Optimize the portfolios by large-scale Quadratic Optimization based on Markowitz Model and Backtesting based on historical market data](#optimize-the-portfolios-by-quadratic-optimization)
 
-## Install realavant packages before start  
+## Install relevant packages before start  
 To successfully achive the purpose and realize functions of our project, python packages including pandas_datareader and mpl_finance are required to be installed.  
 
 ## Get time series of stock prices by Web Crawler
@@ -316,16 +316,18 @@ In the module `quadratic`, we provide the method `backtest` and `max_drawdown` t
 Above example continues:
 ```python
 >>> from quadratic import backtest, max_drawdown
->>> p_mat=asset_pool_pd.values[0:4]
->>> p_mat=asset_pool_pd
+>>> p_mat=asset_pool_pd[0:4]
+>>> p_mat
 array([[ 5.31  ,  5.14  ,  5.14  , ...,  7.35  ,  7.85  ,  8.2   ],
        [ 1.33  ,  1.3385,  1.3385, ...,  1.4504,  1.49  ,  1.5   ],
        [74.22  , 75.58  , 73.99  , ..., 33.4   , 33.15  , 33.3   ],
        [ 6.16  ,  5.95  ,  5.15  , ...,  7.93  ,  8.1   ,  8.28  ]])
 ```
-![image](https://github.com/CuiweiCheng/matrix/raw/master/images/backtest_demo.png)
 ```python
 >>> value_port=backtest(x_new,p_mat)
+```
+![image](https://github.com/CuiweiCheng/matrix/raw/master/images/backtest_demo.png)
+```python
 >>> value_port
 array([35.34655418, 35.84909189, 34.83459665, 33.84750544, 32.47909014,
        32.57250577, 32.98604229, 32.79489458, 33.06224579, 34.20150541,
