@@ -179,16 +179,17 @@ ADMP -0.091803 -0.007220 -0.036364    ...    -0.157895  0.012500 -0.061728
 >>> [evalist, vlist] =eigen._estimate_spectrum(cov_matrix, tolerance)
 ```
 ### Step4: Generate lower-dimensional covariance matrix
+We can now select the top `k` eigenvector to reduce dimensions.  
+Example below assume `k=10`
 ```python
 >>> import eigen 
 >>> import numpy as np
->>> lower_dim_mat=cov_matrix*np.array(vlist)
->>> len(lower_dim_mat)
-44
->>> len(lower_dim_mat[0])
-44
+>>> k=10
+>>> lower_dim_mat=reduce_dimension(asset_pool_pd,vlist,k)
+>>> lower_dim_mat.shape
+(253, 10)
 ```
-Therefore, the `lower_dim_mat` is now the dimension-reduced covariance matrix
+Therefore, the `lower_dim_mat` is now the dimension-reduced matrix from original daily price data `asset_pool_pd`
 
 ## Build Neural Network to analyze stock portfolios
 ### Step1: Set parameter for the Neural Network
