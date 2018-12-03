@@ -40,7 +40,7 @@ class EDA(object):
     def show_corr_map(self):
         """
         analyze the correlation between the stocks Close Price
-        :return:
+        :return: show the heatmap of correlation between the stocks close price
         """
         import seaborn as sns
         sns.heatmap(self.df.xs(key='Adj Close', axis=1, level='Attributes').corr(), annot=True)

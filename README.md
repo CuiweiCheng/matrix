@@ -44,49 +44,30 @@ This function takes a list of stock symbols, and returns a dataframe. Indexes ar
 >>> print(y)
 ```
 ## Analyze stock prices by exploratory data analysis and plotting K-line graph
-### Step1: Get the price of stocks
-Analysze Apple, Tesla, Goldman Sachs and Microsoft
-#### Step1.1: Import data
+### Exploratory data analysis
+* Show a line plot comparing close price of different stocks.
 ```python
->>>import pandas_datareader.data as wb
->>>aapl = wb.DataReader('AAPL', 'yahoo', start, end)
->>>df = wb.DataReader(['AAPL','TSLA','GS','MS'], 'yahoo', start, end)
->>>df.info()
->>>df.describe()
+>>> import exploratory_data_analysis as eda
+>>> x = eda.EDA(['AAPL', 'TSLA', 'GS', 'MS'])
+>>> x.compare_close_price()
 ```
-#### Step1.2: Get a basic description
+![image](https://github.com/CuiweiCheng/matrix/raw/master/images/compare_price.png)
+* Show the 20 day average with close price with respect to different stocks.
 ```python
->>>df.info()
->>>df.describe()
+>>> x.show_moving_avg()
 ```
-
-#### Step1.3: Deal with missing value
+![image](https://github.com/CuiweiCheng/matrix/raw/master/images/mov_avg.png)
+* Show the heatmap of correlation between the stocks close price.
 ```python
->>>aapl.interpolate()
+>>> x.show_corr_map()
 ```
-### Step2: Visualize time series of data
+![image](https://github.com/CuiweiCheng/matrix/raw/master/images/heatmap.png)
+### Plot K-line graph
 ```python
->>>aapl['Close'].plot(grid=True)
->>>plt.show()
+>>> import k_plot
+>>> k_plot.plot_k_line('AAPL')
 ```
-#### Step2.1: Plot the closing prices and simple moving average
-```python
->>>tickers = ['AAPL', 'TSLA', 'MS', 'GS']
->>>for tick in tickers:
->>>    df['Adj Close'][tick].plot(figsize=(12,4),label=tick)
->>>plt.legend()
-```
-#### Step2.2: Investigate the correlation
-```python
->>>import seaborn as sns
->>>sns.heatmap(df.xs(key='Adj Close',axis=1,level='Attributes').corr(),annot=True)
-```
-### Step3: Plot K-line graph
-```python
->>>import k_plot
->>>k_plot.plot_k_line('AAPL')
-```
-![image](https://github.com/CuiweiCheng/matrix/raw/master/k_line.jpg)
+![image](https://github.com/CuiweiCheng/matrix/raw/master/images/k_line.jpg)
 
 
 ## Investigate indicators of stock prices
