@@ -235,7 +235,7 @@ Set the  `lower bounds`, `upper bounds` and `mu`(which is expected return rate f
 >>> import pandas as pd
 >>> covariance=pd.DataFrame(cov_matrix)
 >>> n=len(covariance)
->>> lower=np.array([random.uniform(0, 0.1) for i in range(n)])
+>>> lower=np.array([random.uniform(0, 0.05) for i in range(n)])
 >>> upper=np.array([random.uniform(0.9, 1) for i in range(n)])
 >>> mu=asset_pool_return_pd.mean(axis=1)
 >>> mu.head()
@@ -318,5 +318,31 @@ array([35.34655418, 35.84909189, 34.83459665, 33.84750544, 32.47909014,
 >>> max_drawdown(value_port)
 0.5217494113999498
 ```
-**Combine Quadratic Optimization with PCA to construct portfolio**  
+**Another example: Combine Quadratic Optimization with PCA to construct portfolio**  
 We now have the `lower_dim_mat` generated from PCA. Then we can apply the quadratic optimization on this new **virtual daily price data**
+```python   
+>>> import random
+>>> import eigen 
+>>> import numpy as np
+>>> import pandas as pd
+>>> from quadratic import quadratic_opt 
+
+>>> asset_pool_return_pd=eigen.calculate_return_rate(lower_dim_mat)
+>>> cov_matrix=eigen.calculate_cov(asset_pool_return_pd)
+>>> covariance=pd.DataFrame(cov_matrix)
+>>> n=len(covariance)
+>>> lower=np.array([random.uniform(0, 0.1) for i in range(n)])
+>>> upper=np.array([random.uniform(0.9, 1) for i in range(n)])
+>>> mu=asset_pool_return_pd.mean(axis=1)
+>>> mu=mu.values
+
+>>> matrix=np.vstack((lower,upper,mu)).T
+>>> matrix=pd.DataFrame(data=matrix,columns=['lower', 'upper', 'mu'])
+>>> result = quadratic_opt(n,lam,matrix,covariance)
+>>> if type(result)!=str:
+        x_new = result[0]
+        F_new = result[1]
+    else:
+        print('Output message is', result)
+```
+Therefore, now `x_new` is the optimal vector of weights for `lower_dim_mat` with `k-dimension` 
